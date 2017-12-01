@@ -6,7 +6,7 @@ function processar($att){
 		//retorna resposta
 		envia(array(
 			"source" 		=> $att['result']['source'],
-			"speech" 		=> $att['result']['parameters']['msg'],
+			"speech" 		=> ".........Texto..........",
 			"displayText"	=> ".........Texto..........",
 			"contextOut"	=> array();
 		));
