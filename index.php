@@ -16,11 +16,11 @@ function envia($parametros){
 	echo json_encode($parametros);
 	return json_encode($parametros);
 }
-
+return "processando";
 $requisicao = file_get_contents("php://input");
 $json = json_decode($requisicao);
 if(isset($json['result']['action'])){
-	return "processando";
+	
 	processar($json);
 }
 ?>
