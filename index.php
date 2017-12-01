@@ -15,11 +15,13 @@ function processar($att){
 
 function envia($parametros){	
 	echo json_encode($parametros);
+	return json_encode($parametros);
 }
 
 $att_resposta = file_get_contents("php://input");
 $att = json_decode($att_resposta, true);
 if(isset($update['result']['action'])){
+	echo "processando";
 	processar($att);
 }
 ?>
