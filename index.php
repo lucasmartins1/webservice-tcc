@@ -1,5 +1,4 @@
 <?php
-header('Content-Type: application/json');
 
 function processar($json){
 	if($json['result']['action'] == ""){
@@ -21,7 +20,7 @@ function envia($parametros){
 $requisicao = file_get_contents("php://input");
 $json = json_decode($requisicao);
 if(isset($json['result']['action'])){
-	echo "processando";
+	return "processando";
 	processar($json);
 }
 ?>
