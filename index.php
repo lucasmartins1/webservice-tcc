@@ -1,7 +1,7 @@
 <?php
-echo "SALVE";
-$method = $_SERVER['REQUEST_METHOD'];
 
+$method = $_SERVER['REQUEST_METHOD'];
+echo $method;
 //Processa apenas se for post
 if($method == "POST"){
 	$requisicao = file_get_contents('php://input');
