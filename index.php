@@ -1,11 +1,11 @@
 <?php
 header('Content-Type: application/json');
 
-function processar($att){
-	if($att['result']['action'] == ""){
+function processar($json){
+	if($json['result']['action'] == ""){
 		//retorna resposta
 		envia(array(
-			"source" 		=> $att['result']['source'],
+			"source" 		=> $json['result']['source'],
 			"speech" 		=> ".........Texto..........",
 			"displayText"	=> ".........Texto..........",
 			"contextOut"	=> array();
@@ -18,10 +18,10 @@ function envia($parametros){
 	return json_encode($parametros);
 }
 
-$att_resposta = file_get_contents("php://input");
-$att = json_decode($att_resposta, true);
-if(isset($update['result']['action'])){
+$requisicao = file_get_contents("php://input");
+$json = json_decode($requisicao);
+if(isset($json['result']['action'])){
 	echo "processando";
-	processar($att);
+	processar($json);
 }
 ?>
