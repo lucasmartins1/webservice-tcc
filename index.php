@@ -1,5 +1,5 @@
 <?php
-return "SALVE";
+echo "SALVE";
 $method = $_SERVER['REQUEST_METHOD'];
 
 //Processa apenas se for post
@@ -30,6 +30,7 @@ if($method == "POST"){
 	return json_encode($resposta);
 }
 else{
+	echo "Metódo não permitido.";
 	return "Metódo não permitido.";
 }
 
