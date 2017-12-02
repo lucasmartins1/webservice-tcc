@@ -6,7 +6,10 @@ $method = $_SERVER['REQUEST_METHOD'];
 if($method == "POST"){
 	$requisicao = file_get_contents('php://input');
 	$json = json_decode($requisicao);
+
 	$resposta = new \stdClass();
+
+	return $json->result->parameters['tipo'];
 
 	$alimento-origem = $json->result->parameters['alimento-origem'];
 	$alimento-destino = $json->result->parameters['alimento-destino'];
