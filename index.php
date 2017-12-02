@@ -67,11 +67,6 @@ if($method == "POST"){
 		$resposta->contextOut['parameters'] = $parametros;
 		return json_encode($resposta);
 	}
-
-	$resposta->speech = "Ok!";
-	$resposta->displayText = "Parabens, ta tudo certo!";
-	$resposta->source = "webhook";
-	return json_encode($resposta);
 }
 else{
 	return "Metódo não permitido.";
