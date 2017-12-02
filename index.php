@@ -28,6 +28,7 @@ if($method == "POST"){
 	if(isset($tipo)){
 		$parametros['tipo'] = $tipo;
 	}
+	return $parametros;
 
 	if(!isset($alimento_origem)){
 		$resposta->speech = "Falta nome de alimento";
