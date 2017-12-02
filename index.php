@@ -32,28 +32,36 @@ if($method == "POST"){
 		$resposta->speech = "Falta nome de alimento";
 		$resposta->displayText = "Você poderia inserir o nome do alimento origem que deseja?";
 		$resposta->source = "webhook";
-		$resposta->contextOut = ["name" => "needOrigem", "lifespan" => 1, "parameters" => $parametros];
+		$resposta->contextOut['name'] = "needOrigem";
+		$resposta->contextOut['lifespan'] = 1;
+		$resposta->contextOut['parameters'] = $parametros;
 		return json_encode($resposta);
 	}
 	if(!isset($alimento-destino)){
 		$resposta->speech = "Falta nome de alimento";
 		$resposta->displayText = "Você poderia inserir o nome do alimento destino que deseja?";
 		$resposta->source = "webhook";
-		$resposta->contextOut = ["name" => "needOrigem", "lifespan" => 1, "parameters" => $parametros];
+		$resposta->contextOut['name'] = "needDestino";
+		$resposta->contextOut['lifespan'] = 1;
+		$resposta->contextOut['parameters'] = $parametros;
 		return json_encode($resposta);
 	}
 	if(!isset($quant)){
 		$resposta->speech = "Falta nome de alimento";
 		$resposta->displayText = "Você poderia inserir a quantidade que deseja?";
 		$resposta->source = "webhook";
-		$resposta->contextOut = ["name" => "needOrigem", "lifespan" => 1, "parameters" => $parametros];
+		$resposta->contextOut['name'] = "needQuant";
+		$resposta->contextOut['lifespan'] = 1;
+		$resposta->contextOut['parameters'] = $parametros;
 		return json_encode($resposta);
 	}
 	if(!isset($tipo)){
 		$resposta->speech = "Falta nome de alimento";
 		$resposta->displayText = "Você poderia inserir o tipo de alimento que deseja?";
 		$resposta->source = "webhook";
-		$resposta->contextOut = ["name" => "needOrigem", "lifespan" => 1, "parameters" => $parametros];
+		$resposta->contextOut['name'] = "needTipo";
+		$resposta->contextOut['lifespan'] = 1;
+		$resposta->contextOut['parameters'] = $parametros;
 		return json_encode($resposta);
 	}
 
