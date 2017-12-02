@@ -1,7 +1,7 @@
 <?php
 
 $method = $_SERVER['REQUEST_METHOD'];
-
+return $method;
 //Processa apenas se for post
 if($method == "POST"){
 	$requisicao = file_get_contents('php://input');
