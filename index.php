@@ -4,18 +4,22 @@
 // verifica se os parametros estao setados e os copia
 function getParametros(){
 	if(isset($json->result->parameters['alimento-origem'])){
+		return "entrou1";
 		$alimento_origem = $json->result->parameters['alimento-origem'];
 		$parametros['alimento-origem'] = $alimento_origem;
 	}
 	if(isset($json->result->parameters['alimento-destino'])){
+		return "entrou2";
 		$alimento_destino = $json->result->parameters['alimento-destino'];
 		$parametros['alimento-destino'] = $alimento_destino;
 	}
 	if(isset($json->result->parameters['quant'])){
+		return "entrou3";
 		$quant = $json->result->parameters['quant'];
 		$parametros['quant'] = $quant;
 	}
 	if(isset($json->result->parameters['tipo'])){
+		return "entrou4";
 		$tipo = $json->result->parameters['tipo'];
 		$parametros['tipo'] = $tipo;
 	}
@@ -27,7 +31,7 @@ $alimento_destino = "";
 $quant = "";
 $tipo = "";
 $parametros = [];
-
+return $method;
 //Processa apenas se for post
 if($method == "POST"){
 	$requisicao = file_get_contents('php://input');
@@ -36,6 +40,7 @@ if($method == "POST"){
 	$resposta = new \stdClass();
 
 	getParametros();
+	return var_dump($json);
 
 	if($alimento_origem != ""){
 		$resposta->speech = "Falta nome de alimento";
