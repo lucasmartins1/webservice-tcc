@@ -1,6 +1,32 @@
 <?php
 
+
+// verifica se os parametros estao setados e os copia
+function getParametros(){
+	if(isset($json->result->parameters['alimento-origem'])){
+		$alimento_origem = $json->result->parameters['alimento-origem'];
+		$parametros['alimento-origem'] = $alimento_origem;
+	}
+	if(isset($json->result->parameters['alimento-destino'])){
+		$alimento_destino = $json->result->parameters['alimento-destino'];
+		$parametros['alimento-destino'] = $alimento_destino;
+	}
+	if(isset($json->result->parameters['quant'])){
+		$quant = $json->result->parameters['quant'];
+		$parametros['quant'] = $quant;
+	}
+	if(isset($json->result->parameters['tipo'])){
+		$tipo = $json->result->parameters['tipo'];
+		$parametros['tipo'] = $tipo;
+	}
+}
+
 $method = $_SERVER['REQUEST_METHOD'];
+$alimento_origem = "";
+$alimento_destino = "";
+$quant = "";
+$tipo = "";
+$parametros = [];
 
 //Processa apenas se for post
 if($method == "POST"){
@@ -9,27 +35,9 @@ if($method == "POST"){
 
 	$resposta = new \stdClass();
 
-	$alimento_origem = $json->result->parameters['alimento-origem'];
-	$alimento_destino = $json->result->parameters['alimento-destino'];
-	$quant = $json->result->parameters['quant'];
-	$tipo = $json->result->parameters['tipo'];
-	return $json;
-	$parametros = [];
+	getParametros();
 
-	if(isset($alimento_origem)){
-		$parametros['alimento-origem'] = $alimento_origem;
-	}
-	if(isset($alimento_destino)){
-		$parametros['alimento-destino'] = $alimento_destino;
-	}
-	if(isset($quant)){
-		$parametros['quant'] = $quant;
-	}
-	if(isset($tipo)){
-		$parametros['tipo'] = $tipo;
-	}
-
-	if(!isset($alimento_origem)){
+	if($alimento_origem != ""){
 		$resposta->speech = "Falta nome de alimento";
 		$resposta->displayText = "Você poderia inserir o nome do alimento origem que deseja?";
 		$resposta->source = "webhook";
@@ -38,7 +46,7 @@ if($method == "POST"){
 		$resposta->contextOut['parameters'] = $parametros;
 		return json_encode($resposta);
 	}
-	if(!isset($alimento_destino)){
+	if($alimento_destino != ""){
 		$resposta->speech = "Falta nome de alimento";
 		$resposta->displayText = "Você poderia inserir o nome do alimento destino que deseja?";
 		$resposta->source = "webhook";
@@ -47,7 +55,7 @@ if($method == "POST"){
 		$resposta->contextOut['parameters'] = $parametros;
 		return json_encode($resposta);
 	}
-	if(!isset($quant)){
+	if($quant != ""){
 		$resposta->speech = "Falta nome de alimento";
 		$resposta->displayText = "Você poderia inserir a quantidade que deseja?";
 		$resposta->source = "webhook";
@@ -56,7 +64,7 @@ if($method == "POST"){
 		$resposta->contextOut['parameters'] = $parametros;
 		return json_encode($resposta);
 	}
-	if(!isset($tipo)){
+	if($tipo != ""){
 		$resposta->speech = "Falta nome de alimento";
 		$resposta->displayText = "Você poderia inserir o tipo de alimento que deseja?";
 		$resposta->source = "webhook";
